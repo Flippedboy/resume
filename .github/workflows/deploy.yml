@@ -36,13 +36,12 @@ jobs:
           import pathlib
           p = pathlib.Path("dist/index.html")
           s = p.read_text(encoding="utf-8")
+          s = s.replace("https://github.com/moxianwen", "https://github.com/Flippedboy/AI")
           # 修复：图标路径增加 /resume/ 子目录前缀
           s = s.replace("{{{appAvatar}}}", "/resume/favicon.svg")
           s = s.replace("{{appAvatar}}", "/resume/favicon.svg")
           s = s.replace("{{appName}}", "\u83ab\u8d24\u6587-AI\u5f00\u53d1\u7b80\u5386")
           s = s.replace("{{appDescription}}", "AI\u5927\u6a21\u578b\u5f00\u53d1\u5de5\u7a0b\u5e08\u4e2a\u4eba\u7b80\u5386")
-          s = s.replace("{{github}}", "https://github.com/Flippedboy/AI")
-          s = s.replace("https://github.com/moxianwen", "https://github.com/Flippedboy/AI")
           for ph in ["{{appId}}", "{{userId}}", "{{tenantId}}", "{{userName}}", "{{csrfToken}}"]:
               s = s.replace(ph, "")
           s = s.replace("{{environment}}", "production")
