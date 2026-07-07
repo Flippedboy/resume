@@ -27,8 +27,8 @@ jobs:
       - name: Build
         run: npx vite build --outDir dist --emptyOutDir
         env:
-          CLIENT_BASE_PATH: /
-          ASSETS_CDN_PATH: /
+          CLIENT_BASE_PATH: /resume/
+          ASSETS_CDN_PATH: /resume/
           NODE_ENV: production
       - name: Fill template placeholders for static hosting
         run: |
@@ -36,8 +36,9 @@ jobs:
           import pathlib
           p = pathlib.Path("dist/index.html")
           s = p.read_text(encoding="utf-8")
-          s = s.replace("{{{appAvatar}}}", "/favicon.svg")
-          s = s.replace("{{appAvatar}}", "/favicon.svg")
+          # 修复：图标路径增加 /resume/ 子目录前缀
+          s = s.replace("{{{appAvatar}}}", "/resume/favicon.svg")
+          s = s.replace("{{appAvatar}}", "/resume/favicon.svg")
           s = s.replace("{{appName}}", "\u83ab\u8d24\u6587-AI\u5f00\u53d1\u7b80\u5386")
           s = s.replace("{{appDescription}}", "AI\u5927\u6a21\u578b\u5f00\u53d1\u5de5\u7a0b\u5e08\u4e2a\u4eba\u7b80\u5386")
           for ph in ["{{appId}}", "{{userId}}", "{{tenantId}}", "{{userName}}", "{{csrfToken}}"]:
@@ -50,6 +51,10 @@ jobs:
               raise SystemExit("Leftover placeholders: " + str(left))
           print("title:", re.search(r"<title>[^<]*</title>", s).group(0))
           PY
+      # 复制index生成404.html（放在模板替换之后，保证内容同步更新）
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+      # 禁止Jekyll处理下划线资源文件
       - name: Disable Jekyll
         run: touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3
