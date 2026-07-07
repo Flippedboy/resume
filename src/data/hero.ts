@@ -19,6 +19,6 @@ export const MOCK_HERO: IHero = {
   avatarUrl: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ylcylz_fsph_ryhs/ljhwZthlaukjlkulzlp/feisuda/avatar/base/3.jpg',
   email: '14771235028@163.com',
   phone: '14771235028',
-  github: 'https://github.com/Flippedboy/AI',
+  github: 'https://github.com/Flippedboy/AI/',
   linkedin: 'https://linkedin.com/in/moxianwen',
 }
