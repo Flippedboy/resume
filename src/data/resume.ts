@@ -71,11 +71,12 @@ export const MOCK_RESUME: IResume = {
     avatarUrl: 'https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/1b22a057adf94e5db2d4560b8fcd93c5.jpeg~tplv-a9rns2rl98-image-qvalue.jpeg?lk3s=8e244e95&rcl=20260705193031AAFCDD15C3FCC38FC9CE&rrcfp=1860f75c&x-expires=1783855832&x-signature=OHxDsPo9EYOXVZnOBHGwEPRBAl8%3D',
     email: '14771235028@163.com',
     phone: '147-7123-5028',
-    github: 'github.com/moxianwen',
+    github: 'github.com/Flippedboy/AI',
     linkedin: 'linkedin.com/in/moxianwen',
     location: '广州 · 佛山 · 深圳',
   },
   skills: [
+    
     { id: '1', category: '大模型与AI框架', name: 'LangChain', proficiency: 92 },
     { id: '2', category: '大模型与AI框架', name: 'LangGraph', proficiency: 88 },
     { id: '3', category: '大模型与AI框架', name: 'LlamaIndex', proficiency: 80 },
